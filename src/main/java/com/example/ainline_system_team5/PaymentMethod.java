@@ -1,4 +1,4 @@
-
+package com.example.ainline_system_team5;
 public class PaymentMethod {
 	 private String type; // Credit card, Debit card, PayPal, etc.
 	    private String cardNumber;
