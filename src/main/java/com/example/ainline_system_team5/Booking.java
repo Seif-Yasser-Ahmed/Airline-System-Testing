@@ -70,11 +70,11 @@ public class Booking extends Flight{
     
     }
     
-    public String GetBookingDetails() {
+   public String GetBookingDetails() {
         StringBuilder details = new StringBuilder();
         details.append("Booking ID: ").append(bookingID).append("\n");
-        details.append("From: ").append(from).append("\n");
-        details.append("To: ").append(to).append("\n");
+        details.append("From: ").append(from.getName()).append("\n"); // Check `getName()`
+        details.append("To: ").append(to.getName()).append("\n");
         details.append("Date and Time: ").append(datetime).append("\n");
         details.append("Seat Class: ").append(seat_class).append("\n");
       
