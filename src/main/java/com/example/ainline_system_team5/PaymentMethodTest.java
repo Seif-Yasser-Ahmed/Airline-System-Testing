@@ -101,4 +101,31 @@ public class PaymentMethodTest {
         paymentMethod.setSecurityCode("456");
         assertEquals("456", paymentMethod.getSecurityCode());
     }
+
+    @Test
+    @Order(11)
+    public void testInvalidCardNumber() {
+        // Test with an invalid card number (too short)
+        assertThrows(IllegalArgumentException.class, () -> {
+            paymentMethod.setCardNumber("12345"); // Invalid length
+        });
+    }
+
+    @Test
+    @Order(12)
+    public void testInvalidExpirationDate() {
+        // Test with an invalid expiration date format
+        assertThrows(IllegalArgumentException.class, () -> {
+            paymentMethod.setExpirationDate("13/25"); // Invalid month
+        });
+    }
+
+    @Test
+    @Order(13)
+    public void testInvalidSecurityCode() {
+        // Test with an invalid security code (too long)
+        assertThrows(IllegalArgumentException.class, () -> {
+            paymentMethod.setSecurityCode("12345"); // Invalid length
+        });
+    }
 }
