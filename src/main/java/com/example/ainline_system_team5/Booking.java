@@ -54,6 +54,10 @@ public class Booking extends Flight{
     public void setSeatClass(String seatClass) {
         this.seat_class = seatClass;
     }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
     
     public void EditBooking(String seatClass, PaymentMethod paymentMethod) {
         this.seat_class = seatClass;
