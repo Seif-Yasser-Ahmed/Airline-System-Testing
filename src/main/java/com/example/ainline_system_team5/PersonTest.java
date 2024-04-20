@@ -52,7 +52,6 @@ class PersonTest {
     	String Expectedlname="Yasser";
     	person.setFirstName(Expectedfname);
 		person.setLastName(Expectedlname);
-		System.out.println(person.getId());
 		assertEquals(Expectedfname+" "+Expectedlname,person.getFullName());
 	}
 	
@@ -107,8 +106,32 @@ class PersonTest {
 		assertEquals(12,person4.getId());
 	}
 	
+	@Test
+	@Order(9)
+	void testGetPersonDetails() {
+		Booking booking1 = new Booking(null, null, null, null, null);
+//		person.addBooking(booking1);
+//		Person person1=new Person("Seif1","Yasser");
+		person.setAddress("Cairo");
+		person.setEmail("seiffyasserr@gmail.com");
+		person.setFirstName("Seif");
+		person.setLastName("Yasser");
+		person.setPassword("1234");
+		person.setPhone_num(1090555883);
+		String Expected="Person ID: 13\n"
+				+ "First Name: Seif\n"
+				+ "Second Name: Yasser\n"
+				+ "Phone Number: 1090555883\n"
+				+ "Email: seiffyasserr@gmail.com\n"
+//				+ "Bookings: "+booking1.+
+				+ "Address: Cairo\n";
+		System.out.println(person.getPersonDetails());
+		System.out.println(person.PersonList.get(12).getFirstname());
+		assertEquals(Expected,person.getPersonDetails());
+	}
+	
 //	@Test
-//	@Order(9)
+//	@Order(10)
 //	void testBookings() {
 //		Booking booking1=new Booking();
 //		Booking booking2=new Booking();

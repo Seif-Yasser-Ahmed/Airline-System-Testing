@@ -1,6 +1,8 @@
 package com.example.ainline_system_team5;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,17 +13,18 @@ public class Person {
     String firstname;
     String lastname;
     int id;
-    private static int nextId = 1;
+    private static int nextId = 0;
     String address;
     int phone_num;
     String email;
     String password;
-    private List<Booking> bookingHistory;
-    private List<Person> PersonList;
+    private static ArrayList<Booking> bookingHistory= new ArrayList<Booking>();
+    public static ArrayList<Person> PersonList = new ArrayList<Person>();
     private Map idmap=new HashMap();
     public Person() {
     	this.id=nextId;
     	nextId++;
+    	PersonList.add(this);
     }
 //    public Person(int id) {
 //    	this.id=id;
@@ -32,15 +35,13 @@ public class Person {
         this.lastname=lname;
         this.id=nextId;
         nextId++;
-    	
         PersonList.add(this);
         
 //        idmap.put(id,this);
     }
-    public Person(String fname,String lname,int id,String pass,String mail,int phone,String add){
+    public Person(String fname,String lname,String pass,String mail,int phone,String add){
         this.firstname=fname;
         this.lastname=lname;
-        this.id=id;
         this.email=mail;
         this.password=pass;
         this.phone_num=phone;
@@ -52,7 +53,7 @@ public class Person {
     }
 
     public String getFirstname(){
-        return firstname;
+        return this.firstname;
     }
     public String getFullName(){
         return (firstname+" "+lastname);
@@ -109,6 +110,18 @@ public class Person {
     }
     public Map getIdmap(){
         return idmap;
+    }
+    public String getPersonDetails() {
+    	StringBuilder details = new StringBuilder();
+        details.append("Person ID: ").append(id).append("\n");
+        details.append("First Name: ").append(firstname).append("\n");
+        details.append("Second Name: ").append(lastname).append("\n");
+        details.append("Phone Number: ").append(phone_num).append("\n");
+        details.append("Email: ").append(email).append("\n");
+//        details.append("Bookings: ").append(bookingHistory).append("\n");
+        details.append("Address: ").append(address).append("\n");
+      
+        return details.toString();
     }
 
     //------ To be moved to: Booking.java
