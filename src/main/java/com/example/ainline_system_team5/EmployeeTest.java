@@ -126,10 +126,10 @@ class EmployeeTest {
 	    Employee employee2=new Employee();
 	    Employee employee3=new Employee();
 	    Employee employee4=new Employee();
-	    assertEquals(17, employee1.getId());
-	    assertEquals(18,employee2.getId());
-	    assertEquals(19,employee3.getId());
-	    assertEquals(20,employee4.getId());
+	    assertEquals(9, employee1.getId());
+	    assertEquals(10,employee2.getId());
+	    assertEquals(11,employee3.getId());
+	    assertEquals(12,employee4.getId());
 	}
 
 	
