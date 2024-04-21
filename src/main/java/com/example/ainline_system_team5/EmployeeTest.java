@@ -15,9 +15,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EmployeeTest {
-	Employee employee=new Employee();
+	static Employee employee;
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		employee=new Employee();
 	}
 
 	@AfterAll
@@ -63,9 +64,74 @@ class EmployeeTest {
 	}
 	@Test
 	@Order(2)
-	void test() {
-		
+	void testSetFirstName() {
+	    String Expected="Seif";
+	    employee.setFirstName(Expected);
+	    assertEquals(Expected,employee.getFirstname());
+//			fail("Not yet implemented");
 	}
+
+	@Test
+	@Order (3)
+	void testSetFullName() {
+	    
+	    String Expectedfname="Seif";
+	    String Expectedlname="Yasser";
+	    employee.setFirstName(Expectedfname);
+	    employee.setLastName(Expectedlname);
+	    assertEquals(Expectedfname+" "+Expectedlname,employee.getFullName());
+	}
+
+	@Test
+	@Order(4)
+	void testPassword() {
+	    String Expected="Pass@123";
+	    employee.setPassword(Expected);
+	    assertEquals(Expected,employee.password);
+	}
+
+	@Test
+	@Order(5)
+	void testID() {
+	    int Expected=1234;
+	    employee.setId(Expected);
+	    assertEquals(Expected,employee.getId());
+	}
+	@Test
+	@Order(6)
+	void testAddress() {
+	    String Expected="Cairo";
+	    employee.setAddress(Expected);
+	    assertEquals(Expected,employee.getAddress());
+	}
+	@Test
+	@Order(7)
+	void testPhoneNo() {
+	    int Expected=1090555883;
+	    employee.setPhone_num(Expected);
+	    assertEquals(Expected,employee.getPhone_num());
+	}
+
+	@Test
+	@Order(8)
+	void testEmail() {
+	String Expected="seiffyasserr@gmail.com";
+	employee.setEmail(Expected);
+	    assertEquals(Expected,employee.getEmail());
+	}
+	@Test
+	@Order(9)
+	void testIdmap() {
+	    Employee employee1=new Employee();
+	    Employee employee2=new Employee();
+	    Employee employee3=new Employee();
+	    Employee employee4=new Employee();
+	    assertEquals(17, employee1.getId());
+	    assertEquals(18,employee2.getId());
+	    assertEquals(19,employee3.getId());
+	    assertEquals(20,employee4.getId());
+	}
+
 	
 
 }

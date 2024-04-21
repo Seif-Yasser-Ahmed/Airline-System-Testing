@@ -5,21 +5,22 @@ import java.util.Map;
 public class Employee extends Person{
 //    boolean isAdmin=false;
     float salary;
+    int id;
     private static int adminNextid = 1;
 
     public Employee(String fname, String lname) {
         super(fname, lname);
-        this.adminNextid=adminNextid;
+        this.id=adminNextid;
         adminNextid++;
     }
     public Employee(String fname, String lname, int id, String pass, String mail, int phone, String add) {
         super(fname, lname, pass, mail, phone, add);
-        this.adminNextid=adminNextid;
+        this.id=adminNextid;
         adminNextid++;
     }
     
     public Employee() {
-    	this.adminNextid=adminNextid;
+    	this.id=adminNextid;
     	adminNextid++;
 	}
 	public Object getPersonDetailsbyID(int id){
@@ -27,6 +28,6 @@ public class Employee extends Person{
 		return PersonList.get(id).getPersonDetails();
     }
 	public int getAdminID() {
-		return adminNextid;
+		return id;
 	}
 }

@@ -48,6 +48,7 @@ class PersonTest {
 	@Test
 	@Order (2)
 	void testSetFullName() {
+		
     	String Expectedfname="Seif";
     	String Expectedlname="Yasser";
     	person.setFirstName(Expectedfname);
@@ -100,10 +101,10 @@ class PersonTest {
 		Person person2=new Person();
 		Person person3=new Person();
 		Person person4=new Person();
-		assertEquals(9,person1.getId());
-		assertEquals(10,person2.getId());
-		assertEquals(11,person3.getId());
-		assertEquals(12,person4.getId());
+		assertEquals(8,person1.getId());
+		assertEquals(9,person2.getId());
+		assertEquals(10,person3.getId());
+		assertEquals(11,person4.getId());
 	}
 	
 	@Test
@@ -118,7 +119,7 @@ class PersonTest {
 		person.setLastName("Yasser");
 		person.setPassword("1234");
 		person.setPhone_num(1090555883);
-		String Expected="Person ID: 13\n"
+		String Expected="Person ID: 12\n"
 				+ "First Name: Seif\n"
 				+ "Second Name: Yasser\n"
 				+ "Phone Number: 1090555883\n"
@@ -126,7 +127,7 @@ class PersonTest {
 //				+ "Bookings: "+booking1.+
 				+ "Address: Cairo\n";
 		System.out.println(person.getPersonDetails());
-		System.out.println(person.PersonList.get(12).getFirstname());
+		System.out.println(person.PersonList.get(11).getFirstname());
 		assertEquals(Expected,person.getPersonDetails());
 	}
 	
