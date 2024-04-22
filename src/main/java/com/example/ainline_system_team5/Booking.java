@@ -13,6 +13,9 @@ public class Booking{
     public Booking() {
     	this.bookingID="00"+"-"+LocalDateTime.now().getDayOfMonth()+""+LocalDateTime.now().getMonthValue()+""+LocalDateTime.now().getYear();
     }
+    public Booking(String ID) {
+    	this.bookingID=ID;
+    }
     public Booking(String FlightID, Airport from, Airport to,Flight flight, String seatClass) {
         this.bookingID = FlightID+ "-"+LocalDateTime.now();
         this.from = from;

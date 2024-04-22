@@ -98,15 +98,18 @@ class PersonTest {
 	@Test
 	@Order(8)
 	void testIdmap() {
-
 		Person person1=new Person();
 		Person person2=new Person();
 		Person person3=new Person();
 		Person person4=new Person();
 		assertEquals(1,person1.getId());
+		assertNotEquals(4,person1.getId());
 		assertEquals(2,person2.getId());
+		assertNotEquals(3,person2.getId());
 		assertEquals(3,person3.getId());
+		assertNotEquals(2,person3.getId());
 		assertEquals(4,person4.getId());
+		assertNotEquals(1,person4.getId());
 	}
 	
 	@Test
@@ -163,9 +166,22 @@ class PersonTest {
 	@Order(12)
 	void testSearchBooking() {
 		Booking booking1=new Booking();
+		Booking booking2=new Booking("12-Seif");
 		String ID="00"+"-"+LocalDateTime.now().getDayOfMonth()+""+LocalDateTime.now().getMonthValue()+""+LocalDateTime.now().getYear();
 		person.addBooking(booking1);
-		assertEquals(booking1,person.getBookingDetails(ID));
+		assertSame(booking1,person.getBookingDetails(ID));
+		assertNotSame(booking2,person.getBookingDetails(ID));
+	}
+	@Test
+	@Order(13)
+	void testRemoveBooking() {
+		Booking booking1=new Booking();
+		Booking booking2=new Booking();
+		person.addBooking(booking2);
+		person.addBooking(booking1);
+		assertFalse(2==person.getBookings().size());
+		person.removeBooking(booking2);
+		assertTrue(2==person.getBookings().size());
 	}
 	
 //	@Test
