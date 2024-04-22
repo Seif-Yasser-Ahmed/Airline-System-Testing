@@ -36,8 +36,9 @@ public class AirportTest {
     public void setUp() {
         // Create Booking instances before each test with updated airport and destination
         LocalDateTime flightTime = LocalDateTime.now().plusDays(1); // Tomorrow's date for booking
-        booking1 = new Booking("FL001", airport, destinationAirport, flightTime, "Economy");
-        booking2 = new Booking("FL002", airport, destinationAirport, flightTime.plusHours(1), "Business");
+        Flight flight=new Flight();
+        booking1 = new Booking("FL001", airport, destinationAirport,flight,"Economy");
+        booking2 = new Booking("FL002", airport, destinationAirport,flight,"Business");
 
         // Initialize the bookings list and add a booking
         airport.setBookings(new ArrayList<>());

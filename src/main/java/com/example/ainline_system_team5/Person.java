@@ -18,7 +18,7 @@ public class Person {
     int phone_num;
     String email;
     String password;
-    private static ArrayList<Booking> bookingHistory= new ArrayList<Booking>();
+    private ArrayList<Booking> bookingHistory= new ArrayList<Booking>();
     public static ArrayList<Person> PersonList = new ArrayList<Person>();
     private Map idmap=new HashMap();
     public Person() {
@@ -105,6 +105,9 @@ public class Person {
     public void addBooking(Booking booking) {
     	bookingHistory.add(booking);
     }
+    public void removeBooking(Booking booking) {
+    	bookingHistory.remove(booking);
+    }
     public List<Booking> getBookings(){
         return bookingHistory;
     }
@@ -127,9 +130,14 @@ public class Person {
     	Airport airport=new Airport();
     	return airport.searchFlights(from, to);
     }
-//    public Booking getBookingDetails() {
-//    	return;
-//    } 
+    public Booking getBookingDetails(String id) {
+    	for(int i=0;i<bookingHistory.size();i++) {
+    		if(bookingHistory.get(i).bookingID.equals(id)) {
+    			return bookingHistory.get(i);
+    		}
+    	}
+    	return null;
+    } 
 
 
 

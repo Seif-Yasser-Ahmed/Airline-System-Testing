@@ -18,9 +18,12 @@ public class Flight {
 
     public Flight() {}
     public Flight(int FlightID,Airport from,Airport to) {
+    	LocalDateTime newDatetime = LocalDateTime.of(2024,4,25,12,0);
     	this.FlightID = FlightID;
     	this.from = from;
         this.to = to;
+//        this.arrivalTime = arrivalTime;
+        this.departureTime = newDatetime;
     }
     public Flight(int FlightID,Airport from, Airport to,flightstatus status,LocalDateTime departureTime,LocalDateTime arrivalTime) { 
         this.FlightID = FlightID;

@@ -42,7 +42,6 @@ class PersonTest {
 	@Test
 	@Order (1)
 	void testSetFirstName() {
-		System.out.println(person.getId());
     	String Expected="Seif";
 		person.setFirstName(Expected);
 		assertEquals(Expected,person.getFirstname());
@@ -52,7 +51,6 @@ class PersonTest {
 	@Test
 	@Order (2)
 	void testSetFullName() {
-		System.out.println(person.getId());
     	String Expectedfname="Seif";
     	String Expectedlname="Yasser";
     	person.setFirstName(Expectedfname);
@@ -63,7 +61,6 @@ class PersonTest {
 	@Test
 	@Order(3)
 	void testPassword() {
-		System.out.println(person.getId());
 		String Expected="Pass@123";
 		person.setPassword(Expected);
 		assertEquals(Expected,person.password);
@@ -162,9 +159,17 @@ class PersonTest {
 		int Expected=person.searchFlights(airportFrom5, airportTo5).get(0).getFlightID();
 		assertEquals(5,Expected);
 	}
+	@Test
+	@Order(12)
+	void testSearchBooking() {
+		Booking booking1=new Booking();
+		String ID="00"+"-"+LocalDateTime.now().getDayOfMonth()+""+LocalDateTime.now().getMonthValue()+""+LocalDateTime.now().getYear();
+		person.addBooking(booking1);
+		assertEquals(booking1,person.getBookingDetails(ID));
+	}
 	
 //	@Test
-//	@Order(10)
+//	@Order(13)
 //	void testBookings() {
 //		Booking booking1=new Booking();
 //		Booking booking2=new Booking();

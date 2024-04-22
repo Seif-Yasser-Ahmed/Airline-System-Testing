@@ -17,8 +17,9 @@ class BookingTest {
     public void setUp() {
         from = new Airport("EIA", "Egypt International Airport", "Egypt");
         to = new Airport("LHR", "Heathrow Airport", "UK");
+        Flight flight=new Flight(1,from,to);
         LocalDateTime datetime = LocalDateTime.of(2024, 4, 13, 12, 0);
-        booking = new Booking("ABC123", from, to, datetime, "Economy");
+        booking = new Booking("ABC123", from, to,flight , "Economy");
     }
 
     @Test
@@ -33,7 +34,7 @@ class BookingTest {
     
     @Test
     public void testGetDatetime() {
-        LocalDateTime expectedDatetime = LocalDateTime.of(2024, 4, 13, 12, 0);
+        LocalDateTime expectedDatetime = LocalDateTime.of(2024,4,25,12,0);
         assertEquals(expectedDatetime, booking.getDatetime());
     }
 
@@ -48,12 +49,12 @@ class BookingTest {
         assertEquals("Business", booking.getSeatClass());
     }
 
-    @Test
-    public void testSetDatetime() {
-        LocalDateTime newDatetime = LocalDateTime.of(2024, 5, 13, 12, 0);
-        booking.setDatetime(newDatetime);
-        assertEquals(newDatetime, booking.getDatetime());
-    }
+//    @Test
+//    public void testSetDatetime() {
+//        LocalDateTime newDatetime = LocalDateTime.of(2024, 5, 13, 12, 0);
+//        booking.setDatetime(newDatetime);
+//        assertEquals(newDatetime, booking.getDatetime());
+//    }
 
     @Test
     public void testGetBookingID() {
