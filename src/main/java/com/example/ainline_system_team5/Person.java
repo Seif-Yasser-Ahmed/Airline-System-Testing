@@ -123,23 +123,13 @@ public class Person {
       
         return details.toString();
     }
-
-    //------ To be moved to: Booking.java
-//    public void addBooking(Booking booking){
-//        bookingHistory.add(booking);
-//    }
-    //------ To be moved to: Flight.java
-//    public Flight searchflight(Airport from,Airport to){
-//        for(int x=0;x<Airport.flights.size();x++){
-//            if (Airport.flights.get(x).from==from &&Airport.flights.get(x).to==to){
-//                return Airport.flights.get(x);
-//            }
-//        }
-//        return null;
-//    }
-//    public Flight.flightstatus getFlightStatus(){
-//        return Flight.status;
-//    }
+    public List<Flight> searchFlights(Airport from ,Airport to){
+    	Airport airport=new Airport();
+    	return airport.searchFlights(from, to);
+    }
+//    public Booking getBookingDetails() {
+//    	return;
+//    } 
 
 
 

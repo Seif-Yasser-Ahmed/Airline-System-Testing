@@ -3,9 +3,13 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
+import com.example.ainline_system_team5.Flight.flightstatus;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
@@ -16,10 +20,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PersonTest {
-	static Person person;
+	static Person person=new Person();
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		person=new Person();
+//		person
 	}
 
 	@AfterAll
@@ -102,10 +106,10 @@ class PersonTest {
 		Person person2=new Person();
 		Person person3=new Person();
 		Person person4=new Person();
-		assertEquals(8,person1.getId());
-		assertEquals(9,person2.getId());
-		assertEquals(10,person3.getId());
-		assertEquals(11,person4.getId());
+		assertEquals(1,person1.getId());
+		assertEquals(2,person2.getId());
+		assertEquals(3,person3.getId());
+		assertEquals(4,person4.getId());
 	}
 	
 	@Test
@@ -114,13 +118,14 @@ class PersonTest {
 		Booking booking1 = new Booking(null, null, null, null, null);
 //		person.addBooking(booking1);
 //		Person person1=new Person("Seif1","Yasser");
+//		System.out.println(person.id);
 		person.setAddress("Cairo");
 		person.setEmail("seiffyasserr@gmail.com");
 		person.setFirstName("Seif");
 		person.setLastName("Yasser");
 		person.setPassword("1234");
 		person.setPhone_num(1090555883);
-		String Expected="Person ID: 12\n"
+		String Expected="Person ID: 1234\n"
 				+ "First Name: Seif\n"
 				+ "Second Name: Yasser\n"
 				+ "Phone Number: 1090555883\n"
@@ -128,6 +133,34 @@ class PersonTest {
 //				+ "Bookings: "+booking1.+
 				+ "Address: Cairo\n";
 		assertEquals(Expected,person.getPersonDetails());
+	}
+	@Test
+	@Order(10)
+	void testSearch() { 
+	        
+		Airport airportFrom1=new Airport();
+		Airport airportTo1=new Airport();
+		Airport airportFrom2=new Airport();
+		Airport airportTo2=new Airport();
+		Airport airportFrom3=new Airport();
+		Airport airportTo3=new Airport();
+		Airport airportFrom4=new Airport();
+		Airport airportTo4=new Airport();
+		Airport airportFrom5=new Airport();
+		Airport airportTo5=new Airport();
+		
+		Flight flight1=new Flight(1,airportFrom1,airportTo1);
+		Flight flight2=new Flight(2,airportFrom2,airportTo2);
+		Flight flight3=new Flight(3,airportFrom3,airportTo3);
+		Flight flight4=new Flight(4,airportFrom4,airportTo4);
+		Flight flight5=new Flight(5,airportFrom5,airportTo5);
+		airportFrom1.flights.add(flight1);
+		airportFrom2.flights.add(flight2);
+		airportFrom1.flights.add(flight3);
+		airportFrom1.flights.add(flight4);
+		airportFrom1.flights.add(flight5);
+		int Expected=person.searchFlights(airportFrom5, airportTo5).get(0).getFlightID();
+		assertEquals(5,Expected);
 	}
 	
 //	@Test

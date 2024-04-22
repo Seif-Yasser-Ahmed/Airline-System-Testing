@@ -8,24 +8,30 @@ import java.util.Stack;
 public class Flight {
 	private List<Flight> seats;
     public enum flightstatus{Static,Delayed,Tookoff,Arrived};
-    private static int FlightID;
-    private static Airport from;
-    private static Airport to;
+    private int FlightID;
+    private Airport from;
+    private Airport to;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private int availableSeats;
     static flightstatus status;
 
     public Flight() {}
+    public Flight(int FlightID,Airport from,Airport to) {
+    	this.FlightID = FlightID;
+    	this.from = from;
+        this.to = to;
+    }
     public Flight(int FlightID,Airport from, Airport to,flightstatus status,LocalDateTime departureTime,LocalDateTime arrivalTime) { 
         this.FlightID = FlightID;
     	this.from = from;
         this.to = to;
         this.status = status;
-//        Airport.flights.add(this);
+        Airport.flights.add(this);
         this.arrivalTime = arrivalTime;
         this.departureTime = departureTime;
     }
+    
    
     public void setFlightStatus(flightstatus status){
          this.status = status;

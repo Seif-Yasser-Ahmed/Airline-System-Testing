@@ -1,16 +1,19 @@
 package com.example.ainline_system_team5;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class Airport {
-    public static List<Flight> flights=new Stack<Flight>();
+    public static ArrayList<Flight> flights=new ArrayList<Flight>();
     private List<Booking> bookings;
     
     private String code;
     private String name;
     private String country;
-   
+    public Airport() {
+    	
+    }
     public Airport(String code, String name, String country) {
         this.code = code;
         this.name = name;
@@ -60,6 +63,15 @@ public class Airport {
     
     public String getAirportInfo() {
         return "Airport Code: " + code + ", Name: " + name + ", Country: " + country;
+    }
+    public List<Flight> searchFlights(Airport from ,Airport to) {
+    	ArrayList<Flight>Found=new ArrayList<Flight>();
+    	for(int i=0;i<flights.size();i++) {
+    		if(flights.get(i).getFrom()==from&&flights.get(i).getTo()==to) {
+    			Found.add(flights.get(i));
+    		}
+    	}
+    	return Found;
     }
 
 }
