@@ -37,6 +37,7 @@ class EmployeeTest {
 	@Test
 	@Order(1)
 	void testgetDetails() {
+		System.out.println(employee.getId());
 		ArrayList<Person>Expectedlist = new ArrayList<Person>();
 		Person person1=new Person("Seif","Yasser1","1", "seiffyasser1@gmail.com", 1090555883, "Cairo1");
 		Expectedlist.add(person1);
@@ -65,6 +66,7 @@ class EmployeeTest {
 	@Test
 	@Order(2)
 	void testSetFirstName() {
+		System.out.println(employee.getId());
 	    String Expected="Seif";
 	    employee.setFirstName(Expected);
 	    assertEquals(Expected,employee.getFirstname());
@@ -74,7 +76,7 @@ class EmployeeTest {
 	@Test
 	@Order (3)
 	void testSetFullName() {
-	    
+		System.out.println(employee.getId());
 	    String Expectedfname="Seif";
 	    String Expectedlname="Yasser";
 	    employee.setFirstName(Expectedfname);

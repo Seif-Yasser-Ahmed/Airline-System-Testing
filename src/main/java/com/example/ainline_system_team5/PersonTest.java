@@ -16,11 +16,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class PersonTest {
-//seif
-	Person person=new Person();
+	static Person person;
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		
+		person=new Person();
 	}
 
 	@AfterAll
@@ -39,6 +38,7 @@ class PersonTest {
 	@Test
 	@Order (1)
 	void testSetFirstName() {
+		System.out.println(person.getId());
     	String Expected="Seif";
 		person.setFirstName(Expected);
 		assertEquals(Expected,person.getFirstname());
@@ -48,7 +48,7 @@ class PersonTest {
 	@Test
 	@Order (2)
 	void testSetFullName() {
-		
+		System.out.println(person.getId());
     	String Expectedfname="Seif";
     	String Expectedlname="Yasser";
     	person.setFirstName(Expectedfname);
@@ -59,6 +59,7 @@ class PersonTest {
 	@Test
 	@Order(3)
 	void testPassword() {
+		System.out.println(person.getId());
 		String Expected="Pass@123";
 		person.setPassword(Expected);
 		assertEquals(Expected,person.password);
@@ -126,8 +127,6 @@ class PersonTest {
 				+ "Email: seiffyasserr@gmail.com\n"
 //				+ "Bookings: "+booking1.+
 				+ "Address: Cairo\n";
-		System.out.println(person.getPersonDetails());
-		System.out.println(person.PersonList.get(11).getFirstname());
 		assertEquals(Expected,person.getPersonDetails());
 	}
 	
