@@ -1,3 +1,5 @@
+package com.example.ainline_system_team5;
+
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -20,14 +22,14 @@ class TicketsTest {
 
     @Test
     void testSetPassenger() {
-        Passenger passenger = new Passenger("John", 25);
+        Customer passenger = new Customer("John", 25);
         tickets.setPassenger(passenger);
         assertEquals(passenger, tickets.getPassenger());
     }
 
     @Test
     void testSetFlight() {
-        Flight flight = new Flight("ABC", "2024-04-23", 200);
+        Flight flight = new Flight();
         tickets.setFlight(flight);
         assertEquals(flight, tickets.getFlight());
     }
@@ -60,7 +62,7 @@ class TicketsTest {
 
     @Test
     void testSetPrice() {
-        Passenger passenger = new Passenger("John", 10);
+        Customer passenger = new Customer("John", 10);
         tickets.setPassenger(passenger);
         tickets.setPrice(100);
         assertEquals(50, tickets.getPrice());
@@ -155,7 +157,7 @@ class TicketsTest {
 
     @Test
     void testInvalidSetPrice() {
-        tickets.setPassenger(new Passenger("John", 20));
+        tickets.setPassenger(new Customer("John", 20));
         tickets.setPrice(-100);
         assertEquals(0, tickets.getPrice());
     }
@@ -165,32 +167,36 @@ class TicketsTest {
         tickets.setBaggageAllowance(5);
         assertNotEquals(5, tickets.getBaggageAllowance());
     }
-
+    
     @Nested
     class TicketSuite {
         @Test
         void testTicketCreation() {
             tickets.setTicketId("001", "ABC");
             tickets.setSeatNum("001");
-            tickets.setFlight(new Flight("ABC", "2024-04-23", 200));
+            Airport airportFrom=new Airport();
+            Airport airportTo=new Airport();
+            tickets.setFlight(new Flight(123, airportFrom,airportTo));
             tickets.setPrice(100);
             tickets.setBaggageAllowance(20);
             assertEquals("001", tickets.getSeatNum());
-            assertEquals("ABC", tickets.getFlight().getFlightId());
+            assertEquals(123, tickets.getFlight().getFlightID());
             assertEquals(100, tickets.getPrice());
             assertEquals(20, tickets.getBaggageAllowance());
         }
-
+        	
         @Test
         void testInvalidTicketCreation() {
             tickets.setTicketId("001", "ABC");
             tickets.setSeatNum("001");
-            tickets.setFlight(new Flight("ABC", "2024-04-23", 200));
+            Airport airportFrom=new Airport();
+            Airport airportTo=new Airport();
+            tickets.setFlight(new Flight(123,airportFrom,airportTo));
             tickets.setPrice(-100);
             tickets.setBaggageAllowance(5);
             assertNull(tickets.getPassenger());
             assertEquals("001", tickets.getSeatNum());
-            assertEquals("ABC", tickets.getFlight().getFlightId());
+            assertEquals(123, tickets.getFlight().getFlightID());
             assertEquals(0, tickets.getPrice());
             assertNotEquals(5, tickets.getBaggageAllowance());
         }

@@ -24,6 +24,14 @@ public class Booking{
 //        this.datetime = datetime;
         this.seat_class = seatClass;
     }
+    public Booking(String FlightID,Airport from,Airport to,String seatClass) {
+    	this.bookingID = FlightID+ "-"+LocalDateTime.now();
+        this.from = from;
+        this.to = to;
+//        this.flight=flight;
+//        this.datetime = datetime;
+        this.seat_class = seatClass;
+    }
     
     // Getters and setters
     public String getBookingID() {

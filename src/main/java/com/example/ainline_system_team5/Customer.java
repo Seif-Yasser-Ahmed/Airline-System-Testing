@@ -9,13 +9,17 @@ public class Customer extends Person{
     public Customer(String fname, String lname) {
         super(fname, lname);
     }
-
-    public Customer(String fname, String lname, int id, String pass, String mail, String phone, String add) {
-        super(fname, lname, id, pass, mail, phone, add);
+    public Customer(String fname,int Age) {
+    	this.Age=Age;
+    	this.firstname=fname;
     }
 
-    public void BookFlight(String bookingID, Airport from, Airport to, LocalDateTime datetime, String seat_class){
-        Booking booking=new Booking(bookingID,from,to,datetime,seat_class);
+    public Customer(String fname, String lname, int id, String pass, String mail, int phone, String add) {
+        super(fname, lname,pass, mail, phone, add);
+    }
+
+    public void BookFlight(String bookingID, Airport from, Airport to, String seat_class){
+        Booking booking=new Booking(bookingID,from,to,seat_class);
         BookingHistory.add(booking);
     }
     public void searchflights(){

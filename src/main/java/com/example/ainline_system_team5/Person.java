@@ -13,6 +13,8 @@ public class Person {
     String firstname;
     String lastname;
     int id;
+    int Age;
+    char gender;
     private static int nextId = 0;
     String address;
     int phone_num;
@@ -52,7 +54,19 @@ public class Person {
 //        idmap.put(id,this);
     }
 
-    public String getFirstname(){
+    public int getAge() {
+		return Age;
+	}
+	public void setAge(int age) {
+		Age = age;
+	}
+	public char getGender() {
+		return gender;
+	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	public String getFirstname(){
         return this.firstname;
     }
     public String getFullName(){

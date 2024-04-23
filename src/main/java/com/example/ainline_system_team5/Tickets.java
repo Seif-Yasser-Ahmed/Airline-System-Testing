@@ -1,3 +1,5 @@
+package com.example.ainline_system_team5;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +9,7 @@ public class Tickets {
     private static List<String> issuedTicketIds = new ArrayList<>();
     
     private Seat seat;
-    private Passenger passenger; // to gather passenger data
+    private Customer passenger; // to gather passenger data
     private Flight flight; // to gather flight data (plane capacity, date, etc.)
     private String ticketId; // ticketId = seatnum+destinationCode
     private boolean isBusiness;
@@ -17,7 +19,7 @@ public class Tickets {
     private double price; // depends on age + there is tax
     private int baggageAllowance; // weight and no. of bags allowed
 
-    public Tickets(Seat seat, Passenger passenger, Flight flight, boolean isBusiness, boolean isEconomy,
+    public Tickets(Seat seat, Customer passenger, Flight flight, boolean isBusiness, boolean isEconomy,
                    String status, String seatNum, double price, int baggageAllowance) {
         this.passenger = passenger;
         this.flight = flight;
@@ -27,17 +29,17 @@ public class Tickets {
         this.price = price;
         this.baggageAllowance = baggageAllowance;
 
-        setTicketId(seat.getSeatNumber(), flight.getFlightId());
+        setTicketId(seat.getSeatNumber().toString(), flight.getFlightIdAsString());
       
         setSeatNum(seatNum);
-        setFlightId(flight.getFlightId());
+        setFlightId(flight.getFlightID());
     }
     
     public Tickets() {}
     
     //getters 
     
-    public Passenger getPassenger() {
+    public Customer getPassenger() {
         return passenger;
     }
 
@@ -75,7 +77,7 @@ public class Tickets {
     
     //setters
     
-    public void setPassenger(Passenger passenger) {
+    public void setPassenger(Customer passenger) {
         if (passenger != null) {
             this.passenger = passenger;
         } else {
@@ -95,13 +97,19 @@ public class Tickets {
     
     public void setTicketId(String seatNum, String flightId) {
         Scanner scanner = new Scanner(System.in);
-        String newTicketId;
-        do {
-            System.out.print("Enter ticket ID (3 characters): ");
-            newTicketId = scanner.nextLine();
-        } while (newTicketId.length() != 3 || issuedTicketIds.contains(newTicketId) || !newTicketId.matches("[a-zA-Z0-9]+"));
-        this.ticketId = newTicketId;
+        String newTicketId = flightId + seatNum;
+
+        while (issuedTicketIds.contains(newTicketId)) {
+            System.out.println("Seat already occupied");
+            System.out.print("Enter a valid seat number: ");
+            String validSeatNum = scanner.nextLine();
+            newTicketId = flightId + formatSeatOrFlightId(validSeatNum); 
+            seatNum = validSeatNum;
+        }
         issuedTicketIds.add(newTicketId);
+
+        this.ticketId = newTicketId;
+        this.seatNum = seatNum;
     }
 
     public void setSeatNum(String seatNum) {
@@ -117,7 +125,7 @@ public class Tickets {
         this.seatNum = formatSeatOrFlightId(inputSeatNum);
     }
 
-    public void setFlightId(String flightId) {
+    public void setFlightId(int flightId) {
         Scanner scanner = new Scanner(System.in);
         String inputFlightId;
         do {
@@ -127,11 +135,11 @@ public class Tickets {
                 System.out.println("Error: Flight ID cannot be greater than 3 characters.");
             }
         } while (inputFlightId.length() > 3);
-        flight.setFlightId(formatSeatOrFlightId(inputFlightId));
+//        flight.setFlightID(formatSeatOrFlightId(inputFlightId));
     }
 
 
-    private String formatSeatOrFlightId(String id) {
+    public String formatSeatOrFlightId(String id) {
         if (id.length() == 1) {
             return "00" + id;
         } else if (id.length() == 2) {

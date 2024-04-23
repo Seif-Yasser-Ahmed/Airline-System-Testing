@@ -67,6 +67,9 @@ public class Flight {
     public LocalDateTime getDepartureTime() {
         return departureTime;
     }
+    public String getFlightIdAsString() {
+        return String.valueOf(FlightID);
+    }
     @Override
     public String toString() {
         return "Flight{" +
@@ -79,5 +82,7 @@ public class Flight {
                 ", Status=" + status +
                 '}';
     }
+	
+	
 
 }
