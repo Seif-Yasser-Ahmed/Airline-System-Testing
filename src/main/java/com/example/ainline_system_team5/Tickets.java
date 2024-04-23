@@ -174,7 +174,7 @@ public class Tickets {
     }
 
     public void setPrice(double price) {
-        if (passenger != null) {
+        if (passenger != null && price>0) {
             if (passenger.getAge() < 15) {
                 this.price = price - (price * 0.5);
             } else {
@@ -182,6 +182,7 @@ public class Tickets {
             }
         } else {
             System.out.println("Error: Passenger information is missing.");
+            this.price = 0;
         }
     }
 
