@@ -18,7 +18,8 @@ public class Tickets {
     private String seatNum; // 000, 001,.., 400 (max)
     private double price; // depends on age + there is tax
     private int baggageAllowance; // weight and no. of bags allowed
-
+    
+    
     public Tickets(Seat seat, Customer passenger, Flight flight, boolean isBusiness, boolean isEconomy,
                    String status, String seatNum, double price, int baggageAllowance) {
         this.passenger = passenger;
@@ -38,6 +39,10 @@ public class Tickets {
     public Tickets() {}
     
     //getters 
+    
+    public List<String> getIssuedTicketIds() {
+        return issuedTicketIds;
+    }
     
     public Customer getPassenger() {
         return passenger;
@@ -77,6 +82,10 @@ public class Tickets {
     
     //setters
     
+    public void setListNull(){
+    	issuedTicketIds.clear();
+    }
+    
     public void setPassenger(Customer passenger) {
         if (passenger != null) {
             this.passenger = passenger;
@@ -111,19 +120,45 @@ public class Tickets {
         this.ticketId = newTicketId;
         this.seatNum = seatNum;
     }
-
+    
+    
     public void setSeatNum(String seatNum) {
         Scanner scanner = new Scanner(System.in);
-        String inputSeatNum;
+        boolean isValid = false;
+
         do {
-            System.out.print("Enter seat number (3 characters or less): ");
-            inputSeatNum = scanner.nextLine();
-            if (inputSeatNum.length() > 3) {
-                System.out.println("Error: Seat number cannot be greater than 3 characters.");
+            if (seatNum.contains("e")) { // 'e' for empty input, not for error
+                System.out.print("Enter seat number (3 characters or less, digits only): ");
+                seatNum = scanner.nextLine();
+                isValid = true;
+                if (seatNum.length() > 3) {
+                    System.out.println("Error: Seat number cannot be greater than 3 characters.");
+                    isValid = false;
+                } else {
+                    for (int i = 0; i < seatNum.length(); i++) {
+                        if (!Character.isDigit(seatNum.charAt(i))) {
+                            System.out.println("Error: Seat number must contain only digits.");
+                            isValid = false;
+                            break;
+                        }
+                    }
+                }
+            } else {
+                isValid = true;
+                for (int i = 0; i < seatNum.length(); i++) {
+                    if (!Character.isDigit(seatNum.charAt(i))) {
+                        System.out.println("Error: Seat number must contain only digits.");
+                        isValid = false;
+                        seatNum = "e"; 
+                        break;
+                    }
+                }
             }
-        } while (inputSeatNum.length() > 3);
-        this.seatNum = formatSeatOrFlightId(inputSeatNum);
+        } while (!isValid);
+
+        this.seatNum = formatSeatOrFlightId(seatNum);
     }
+
 
     public void setFlightId(int flightId) {
         Scanner scanner = new Scanner(System.in);
@@ -151,10 +186,6 @@ public class Tickets {
         }
     }
 
-
-    public List<String> getIssuedTicketIds() {
-        return issuedTicketIds;
-    }
 
     public void setClassType(boolean isBusiness, boolean isEconomy) {
         if (isEconomy == isBusiness) {
