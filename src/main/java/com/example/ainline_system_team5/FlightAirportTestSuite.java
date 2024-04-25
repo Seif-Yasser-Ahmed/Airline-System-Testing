@@ -4,9 +4,9 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	PersonTest.class,
-	EmployeeTest.class
+	FlightTest.class,
+	AirportTest.class
 	})
-public class PersonTestSuite {
+public class FlightAirportTestSuite {
 //Kept empty
 }
