@@ -1,5 +1,6 @@
-# Software-Testing-Project
-A repo for our group project in the Software Testing course 
+# Testing Airline Reservation System
+An Airline Reservation System with Java, Automated tested using Junit framework for  automated testing
+
 ## Team Members
 > - Seif Yasser
 > - Mohamed Salah
